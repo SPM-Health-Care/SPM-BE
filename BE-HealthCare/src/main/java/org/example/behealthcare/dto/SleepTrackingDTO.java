@@ -2,10 +2,15 @@ package org.example.behealthcare.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -18,11 +23,14 @@ public class SleepTrackingDTO {
     private Integer userId;
 
     @NotBlank(message = "Thời gian đi ngủ không được để trống")
-    private String sleepTime;
+    private LocalTime sleepTime;
 
     @NotBlank(message = "Thời gian thức dậy không được để trống")
-    private String wakeTime;
+    private LocalTime wakeTime;
 
-    private Integer standardId;
+    @NotNull(message = "Ngày ghi nhận không được để trống")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @PastOrPresent(message = "Ngày ghi nhận không được sau ngày hiện tại")
+    private LocalDate recordedAt;
 }
 

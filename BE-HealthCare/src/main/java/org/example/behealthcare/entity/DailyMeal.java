@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "daily_meals")
 @Getter
@@ -24,4 +26,8 @@ public class DailyMeal {
     @ManyToOne
     @JoinColumn(name = "food_id", nullable = false)
     private NutritionDatabase food;
+
+    private Integer calories;
+
+    private LocalDate recordedAt;
 }

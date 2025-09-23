@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "sleep_tracking")
 @Getter
@@ -23,8 +25,5 @@ public class SleepTracking {
 
     private String sleepTime;
     private String wakeTime;
-
-    @ManyToOne
-    @JoinColumn(name = "standard_id", nullable = false)
-    private SleepStandard sleepStandard;
+    private LocalDate recordedAt;
 }

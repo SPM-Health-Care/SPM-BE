@@ -19,6 +19,7 @@ public class ReminderDTO {
     @NotNull(message = "Loại nhắc nhở không được để trống")
     private Integer typeId;
 
+    @NotNull(message = "Trạng thái không được để trống")
     private String status;
 }
 

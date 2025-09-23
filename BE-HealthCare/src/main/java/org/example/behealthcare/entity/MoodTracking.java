@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "mood_tracking")
 @Getter
@@ -23,5 +25,6 @@ public class MoodTracking {
 
     private String mood;
     private Integer stressLevel;
+    private LocalDate recordedAt;
 }
 

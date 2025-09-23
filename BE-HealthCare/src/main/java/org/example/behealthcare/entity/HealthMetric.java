@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "health_metrics")
 @Getter
@@ -21,8 +23,13 @@ public class HealthMetric {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "threshold_id", nullable = false)
+    private HealthThreshold threshold;
+
     private Double weight;
     private Double bloodPressure;
     private Double heartRate;
+    private LocalDate recordedAt;
 }
 
