@@ -1,5 +1,6 @@
 package org.example.behealthcare.service;
 
+import org.example.behealthcare.dto.MoodTrackingDTO;
 import org.example.behealthcare.entity.MoodTracking;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ public interface IMoodTrackingService {
 
     void deleteByRecordedAt(LocalDate recordedAt);
 
-    List<MoodTracking> findAllByUser_UserId(Integer userId);
+    List<MoodTrackingDTO> findAllDtoByUserId(Integer userId);
 
     MoodTracking save(MoodTracking moodTracking);
 }

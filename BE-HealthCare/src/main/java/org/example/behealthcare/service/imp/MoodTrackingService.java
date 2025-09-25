@@ -1,5 +1,6 @@
 package org.example.behealthcare.service.imp;
 
+import org.example.behealthcare.dto.MoodTrackingDTO;
 import org.example.behealthcare.entity.MoodTracking;
 import org.example.behealthcare.repository.IMoodTrackingRepository;
 import org.example.behealthcare.service.IMoodTrackingService;
@@ -25,9 +26,10 @@ public class MoodTrackingService implements IMoodTrackingService {
     }
 
     @Override
-    public List<MoodTracking> findAllByUser_UserId(Integer userId) {
-        return IMoodTrackingRepository.findAllByUser_UserId(userId);
+    public List<MoodTrackingDTO> findAllDtoByUserId(Integer userId) {
+        return IMoodTrackingRepository.findAllDtoByUserId(userId);
     }
+
 
     @Override
     public MoodTracking save(MoodTracking moodTracking) {

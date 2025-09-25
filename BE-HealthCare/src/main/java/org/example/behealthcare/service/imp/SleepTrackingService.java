@@ -1,5 +1,6 @@
 package org.example.behealthcare.service.imp;
 
+import org.example.behealthcare.dto.SleepTrackingDTO;
 import org.example.behealthcare.entity.SleepTracking;
 import org.example.behealthcare.repository.ISleepTrackingRepository;
 import org.example.behealthcare.service.ISleepTrackingService;
@@ -19,13 +20,13 @@ public class SleepTrackingService implements ISleepTrackingService {
     }
 
     @Override
-    public void deleteByUser_UserId(Integer userUserId) {
-        ISleepTrackingRepository.deleteByUser_UserId(userUserId);
+    public void deleteByUser_UserId(Integer userId) {
+        ISleepTrackingRepository.deleteByUser_UserId(userId);
     }
 
     @Override
-    public List<SleepTracking> findByUser_UserId(Integer userUserId) {
-        return ISleepTrackingRepository.findByUser_UserId(userUserId);
+    public List<SleepTrackingDTO> findByUser_UserId(Integer userId) {
+        return ISleepTrackingRepository.findByUser_UserId(userId);
     }
 
     @Override
