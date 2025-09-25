@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ReminderTypeRepository extends JpaRepository<ReminderType, Long> {
+public interface IReminderTypeRepository extends JpaRepository<ReminderType, Long> {
     List<ReminderType> findByTypeId(Integer typeId);
 }

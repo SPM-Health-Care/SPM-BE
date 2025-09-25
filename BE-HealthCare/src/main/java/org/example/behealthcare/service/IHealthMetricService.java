@@ -1,5 +1,6 @@
 package org.example.behealthcare.service;
 
+import org.example.behealthcare.dto.HealthMetricDTO;
 import org.example.behealthcare.entity.HealthMetric;
 
 import java.time.LocalDate;
@@ -12,9 +13,7 @@ public interface IHealthMetricService {
 
     void deleteByRecordedAt(LocalDate recordedAt);
 
-    List<HealthMetric> findByUser_UserId(Integer userId);
-
-    List<HealthMetric> findByThreshold_ThresholdId(Integer thresholdId);
+    List<HealthMetricDTO> findByUser_UserId(Integer userId);
 
     HealthMetric save(HealthMetric healthMetric);
 }

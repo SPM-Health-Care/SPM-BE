@@ -1,5 +1,6 @@
 package org.example.behealthcare.service;
 
+import org.example.behealthcare.dto.DailyMealDTO;
 import org.example.behealthcare.entity.DailyMeal;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public interface IDailyMealService {
 
     DailyMeal findByMealId(Integer mealId);
 
-    List<DailyMeal> findAllByUser_UserId(Integer userId);
+    List<DailyMealDTO> findAllByUser_UserId(Integer userId);
 
     DailyMeal save(DailyMeal dailyMeal);
 }

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NutritionDatabaseRepository extends JpaRepository<NutritionDatabase, Integer> {
+public interface INutritionDatabaseRepository extends JpaRepository<NutritionDatabase, Integer> {
     NutritionDatabase findByFoodName(String foodName);
 
     void deleteByFoodName(String foodName);

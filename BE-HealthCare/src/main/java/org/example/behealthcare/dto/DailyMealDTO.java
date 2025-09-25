@@ -1,6 +1,7 @@
 package org.example.behealthcare.dto;
 
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,21 @@ public class DailyMealDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @PastOrPresent(message = "Ngày ghi nhận không được sau ngày hiện tại")
     private LocalDate recordedAt;
+
+    @NotBlank(message = "Tên món ăn không được để trống")
+    private String foodName;
+
+    public DailyMealDTO(Integer mealId, Integer userId, Integer foodId, String foodName,
+                        Integer calories, LocalDate recordedAt) {
+        this.mealId = mealId;
+        this.userId = userId;
+        this.foodId = foodId;
+        this.foodName = foodName;
+        this.calories = calories;
+        this.recordedAt = recordedAt;
+    }
+
+
 
 
 }
