@@ -1,5 +1,6 @@
 package org.example.behealthcare.service;
 
+import org.example.behealthcare.dto.HealthGoalDTO;
 import org.example.behealthcare.entity.HealthGoal;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface IHealthGoalService {
 
     void deleteByGoalId(Integer goalId);
 
-    List<HealthGoal> findAllByUser_UserId(Integer userId);
+    List<HealthGoalDTO> findAllByUser_UserId(Integer userId);
 
     HealthGoal save(HealthGoal healthGoal);
 }

@@ -1,5 +1,6 @@
 package org.example.behealthcare.controller;
 
+import org.example.behealthcare.dto.HealthGoalDTO;
 import org.example.behealthcare.entity.HealthGoal;
 import org.example.behealthcare.service.IHealthGoalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class HealthGoalController {
     private IHealthGoalService healthGoalService;
 
     @GetMapping("/healthgoals/{userId}")
-    public ResponseEntity<List<HealthGoal>> showHealthGoalsByUserId(@PathVariable Integer userId) {
-        List<HealthGoal> healthGoals = healthGoalService.findAllByUser_UserId(userId);
+    public ResponseEntity<List<HealthGoalDTO>> showHealthGoalsByUserId(@PathVariable Integer userId) {
+        List<HealthGoalDTO> healthGoals = healthGoalService.findAllByUser_UserId(userId);
         System.out.println(healthGoals);
         if (!healthGoals.isEmpty()) {
             return ResponseEntity.ok(healthGoals);

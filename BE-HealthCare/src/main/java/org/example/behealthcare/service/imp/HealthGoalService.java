@@ -1,5 +1,6 @@
 package org.example.behealthcare.service.imp;
 
+import org.example.behealthcare.dto.HealthGoalDTO;
 import org.example.behealthcare.entity.HealthGoal;
 import org.example.behealthcare.repository.IHealthGoalRepository;
 import org.example.behealthcare.service.IHealthGoalService;
@@ -24,7 +25,7 @@ public class HealthGoalService implements IHealthGoalService {
     }
 
     @Override
-    public List<HealthGoal> findAllByUser_UserId(Integer userId) {
+    public List<HealthGoalDTO> findAllByUser_UserId(Integer userId) {
         return IHealthGoalRepository.findAllByUser_UserId(userId);
     }
 
