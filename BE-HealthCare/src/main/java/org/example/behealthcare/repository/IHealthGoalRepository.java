@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IHealthGoalRepository extends JpaRepository<HealthGoal, Integer> {
@@ -20,5 +21,8 @@ public interface IHealthGoalRepository extends JpaRepository<HealthGoal, Integer
             "WHERE hg.user.userId = :userId"
     )
     List<HealthGoalDTO> findAllByUser_UserId(Integer userId);
+
+    @Query("SELECT hg FROM HealthGoal hg WHERE hg.user.userId = :userId")
+    Optional<HealthGoal> findByUser_UserId(Integer userId);
 
 }

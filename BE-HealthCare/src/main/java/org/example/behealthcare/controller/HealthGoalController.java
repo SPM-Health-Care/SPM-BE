@@ -26,4 +26,20 @@ public class HealthGoalController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PutMapping("/goals/{userId}")
+    public ResponseEntity<HealthGoalDTO> updateGoal(
+            @PathVariable Integer userId,
+            @RequestBody HealthGoalDTO dto) {
+
+        HealthGoal updated = healthGoalService.update(userId, dto);
+
+        if (updated != null) {
+            // Trả về DTO thay vì entity để tránh lộ dữ liệu nhạy cảm
+            return ResponseEntity.ok(new HealthGoalDTO(updated));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

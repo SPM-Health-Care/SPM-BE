@@ -13,4 +13,6 @@ public interface IHealthGoalService {
     List<HealthGoalDTO> findAllByUser_UserId(Integer userId);
 
     HealthGoal save(HealthGoal healthGoal);
+
+    HealthGoal update(Integer userId ,HealthGoalDTO healthGoalDto);
 }

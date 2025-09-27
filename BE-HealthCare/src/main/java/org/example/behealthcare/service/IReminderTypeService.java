@@ -5,5 +5,5 @@ import org.example.behealthcare.entity.ReminderType;
 import java.util.List;
 
 public interface IReminderTypeService {
-    List<ReminderType> findByTypeId(Integer typeId);
+    List<ReminderType> findAll();
 }

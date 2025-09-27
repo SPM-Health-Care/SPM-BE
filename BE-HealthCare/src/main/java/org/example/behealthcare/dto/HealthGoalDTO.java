@@ -1,6 +1,8 @@
 package org.example.behealthcare.dto;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.example.behealthcare.entity.HealthGoal;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,4 +19,11 @@ public class HealthGoalDTO {
 
     @NotNull(message = "Chỉ số mục tiêu không được để trống")
     private Double bpGoal;
+
+    public HealthGoalDTO(HealthGoal goal) {
+        this.id = goal.getGoalId();
+        this.userId = goal.getUser().getUserId();
+        this.weightGoal = goal.getWeightGoal();
+        this.bpGoal = goal.getBpGoal();
+    }
 }

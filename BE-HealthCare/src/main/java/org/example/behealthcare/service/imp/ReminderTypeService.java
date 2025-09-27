@@ -14,7 +14,7 @@ public class ReminderTypeService implements IReminderTypeService {
     private IReminderTypeRepository IReminderTypeRepository;
 
     @Override
-    public List<ReminderType> findByTypeId(Integer typeId) {
-        return IReminderTypeRepository.findByTypeId(typeId);
+    public List<ReminderType> findAll() {
+        return IReminderTypeRepository.findAll();
     }
 }

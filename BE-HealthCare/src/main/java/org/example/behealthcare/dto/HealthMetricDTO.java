@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.behealthcare.entity.HealthMetric;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -71,6 +72,14 @@ public class HealthMetricDTO {
         this.maxValue = maxValue;
         this.minValue = minValue;
         this.metricType = metricType;
+    }
+
+    public HealthMetricDTO(HealthMetric updated) {
+        this.metricId = updated.getMetricId();
+        this.bloodPressure = updated.getBloodPressure();
+        this.heartRate = updated.getHeartRate();
+        this.weight = updated.getWeight();
+        this.recordedAt = updated.getRecordedAt();
     }
 }
 

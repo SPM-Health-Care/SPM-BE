@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,20 @@ public class HealthMetricController {
         System.out.println(healthMetrics);
         if (!healthMetrics.isEmpty()) {
             return ResponseEntity.ok(healthMetrics);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/metrics/{userId}/{recordedAt}")
+    public ResponseEntity<HealthMetricDTO> updateMetric(
+            @PathVariable Integer userId,
+            @PathVariable LocalDate recordedAt,
+            @RequestBody HealthMetricDTO dto) {
+
+        HealthMetric updated = healthMetricService.update(userId, recordedAt, dto);
+        if (updated != null) {
+            return ResponseEntity.ok(new HealthMetricDTO(updated));
         } else {
             return ResponseEntity.notFound().build();
         }

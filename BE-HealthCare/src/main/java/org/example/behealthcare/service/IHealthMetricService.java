@@ -16,4 +16,6 @@ public interface IHealthMetricService {
     List<HealthMetricDTO> findByUser_UserId(Integer userId);
 
     HealthMetric save(HealthMetric healthMetric);
+
+    HealthMetric update(Integer userId, LocalDate recordedAt, HealthMetricDTO dto);
 }

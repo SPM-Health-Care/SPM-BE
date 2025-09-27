@@ -18,13 +18,6 @@ public interface IDailyMealRepository extends JpaRepository<DailyMeal, Integer> 
 
     DailyMeal findByMealId(Integer mealId);
 
-
-//    @Query("SELECT dm.mealId, dm.calories, dm.recordedAt, f.foodName " +
-//            "FROM DailyMeal dm " +
-//            "JOIN dm.food f " +
-//            "WHERE dm.user.userId = :userId")
-//    List<DailyMeal> findAllByUser_UserId(@Param("userId") Integer userId);
-
     @Query("SELECT new org.example.behealthcare.dto.DailyMealDTO( " +
             "dm.mealId, u.userId, f.foodId, f.foodName, dm.calories, dm.recordedAt) " +
             "FROM DailyMeal dm " +
