@@ -49,5 +49,4 @@ public class HealthMetricController {
     public ResponseEntity<HealthMetric> create(@Valid @RequestBody HealthMetricCreateDTO dto) {
         return ResponseEntity.ok(healthMetricService.create(dto));
     }
-
 }

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.behealthcare.entity.SleepTracking;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -45,6 +46,12 @@ public class SleepTrackingDTO {
         this.userId = userId;
         this.username = username;
         this.wakeTime = wakeTime;
+    }
+
+    public SleepTrackingDTO(SleepTracking updated) {
+        this.sleepTime = updated.getSleepTime();
+        this.wakeTime = updated.getWakeTime();
+        this.recordedAt = updated.getRecordedAt();
     }
 }
 

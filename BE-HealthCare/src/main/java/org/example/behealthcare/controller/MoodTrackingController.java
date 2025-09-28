@@ -1,5 +1,6 @@
 package org.example.behealthcare.controller;
 
+import org.example.behealthcare.dto.MoodTrackingCreateDTO;
 import org.example.behealthcare.dto.MoodTrackingDTO;
 import org.example.behealthcare.entity.MoodTracking;
 import org.example.behealthcare.service.IMoodTrackingService;
@@ -25,5 +26,23 @@ public class MoodTrackingController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PutMapping("/moodtrackings/{userId}/{moodId}")
+    public ResponseEntity<MoodTrackingDTO> updateMoodTracking(
+            @PathVariable Integer moodId,
+            @PathVariable Integer userId,
+            @RequestBody MoodTrackingDTO dto) {
+        MoodTracking updated = moodTrackingService.update(userId, moodId, dto);
+        if (updated != null) {
+            return ResponseEntity.ok(new MoodTrackingDTO(updated));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/moodtrackings-create")
+    public ResponseEntity<MoodTracking> create(@RequestBody MoodTrackingCreateDTO dto) {
+        return ResponseEntity.ok(moodTrackingService.create(dto));
     }
 }

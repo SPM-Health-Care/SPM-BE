@@ -1,5 +1,6 @@
 package org.example.behealthcare.service;
 
+import org.example.behealthcare.dto.MoodTrackingCreateDTO;
 import org.example.behealthcare.dto.MoodTrackingDTO;
 import org.example.behealthcare.entity.MoodTracking;
 
@@ -14,4 +15,8 @@ public interface IMoodTrackingService {
     List<MoodTrackingDTO> findAllDtoByUserId(Integer userId);
 
     MoodTracking save(MoodTracking moodTracking);
+
+    MoodTracking update(Integer userId, Integer moodId, MoodTrackingDTO dto);
+
+    MoodTracking create(MoodTrackingCreateDTO dto);
 }

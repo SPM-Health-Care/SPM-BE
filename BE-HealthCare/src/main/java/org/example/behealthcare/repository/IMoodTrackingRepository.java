@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IMoodTrackingRepository extends JpaRepository<MoodTracking, Long> {
@@ -22,4 +23,10 @@ public interface IMoodTrackingRepository extends JpaRepository<MoodTracking, Lon
             "JOIN mt.user u " +
             "WHERE u.userId = :userId")
     List<MoodTrackingDTO> findAllDtoByUserId(@Param("userId") Integer userId);
+
+    @Query("SELECT mt FROM MoodTracking mt WHERE mt.moodId = :moodId AND mt.user.userId = :userId")
+    Optional<MoodTracking> findByMoodIdAndUserId(
+            @Param("userId") Integer userId,
+            @Param("moodId") Integer moodId
+    );
 }

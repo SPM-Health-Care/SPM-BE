@@ -23,8 +23,10 @@ import java.util.List;
 public class HealthMetricService implements IHealthMetricService {
     @Autowired
     private IHealthMetricRepository IHealthMetricRepository;
+
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private IHealthThresholdRepository healthThresholdRepository;
 

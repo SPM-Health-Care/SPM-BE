@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.behealthcare.entity.MoodTracking;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,7 +31,7 @@ public class MoodTrackingDTO {
     private LocalDate recordedAt;
 
     @NotNull(message = "Mức độ căng thẳng không được để trống")
-    @Range(min = 1, max = 55, message = "Mức độ căng thẳng phải từ 1 đến 5")
+    @Range(min = 1, max = 5, message = "Mức độ căng thẳng phải từ 1 đến 5")
     private Integer stressLevel;
 
     public MoodTrackingDTO(String mood, Integer moodId, LocalDate recordedAt, Integer stressLevel, Integer userId) {
@@ -39,6 +40,11 @@ public class MoodTrackingDTO {
         this.recordedAt = recordedAt;
         this.stressLevel = stressLevel;
         this.userId = userId;
+    }
+
+    public MoodTrackingDTO(MoodTracking updated) {
+        this.mood = updated.getMood();
+        this.stressLevel = updated.getStressLevel();
     }
 }
 
