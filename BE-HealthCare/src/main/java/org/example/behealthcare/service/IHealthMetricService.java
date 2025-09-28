@@ -1,5 +1,6 @@
 package org.example.behealthcare.service;
 
+import org.example.behealthcare.dto.HealthMetricCreateDTO;
 import org.example.behealthcare.dto.HealthMetricDTO;
 import org.example.behealthcare.entity.HealthMetric;
 
@@ -18,4 +19,6 @@ public interface IHealthMetricService {
     HealthMetric save(HealthMetric healthMetric);
 
     HealthMetric update(Integer userId, LocalDate recordedAt, HealthMetricDTO dto);
+
+    HealthMetric create(HealthMetricCreateDTO dto);
 }

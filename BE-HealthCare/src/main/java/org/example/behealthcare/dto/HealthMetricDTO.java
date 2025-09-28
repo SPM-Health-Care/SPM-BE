@@ -35,8 +35,8 @@ public class HealthMetricDTO {
     @Min(value = 0, message = "Nhịp tim phải lớn hơn hoặc bằng 0")
     private Double heartRate;
 
-//    @NotNull(message = "Threshold ID không được để trống")
-//    private Integer thresholdId;
+    @NotNull(message = "Threshold ID không được để trống")
+    private Integer thresholdId;
 
     @NotNull(message = "Ngày ghi nhận không được để trống")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

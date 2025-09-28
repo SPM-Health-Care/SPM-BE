@@ -64,7 +64,7 @@ public class UserService {
 
     @PostAuthorize("returnObject.username == authentication.name")
     public UserResponse updateUser(String userId, UserUpdateRequest request) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+        User user = userRepository.findById(Integer.valueOf(userId)).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
         userMapper.updateUser(user, request);
         user.setPasswordHash(passwordEncoder.encode(request.getPassword()));
@@ -77,7 +77,7 @@ public class UserService {
 
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteUser(String userId) {
-        userRepository.deleteById(userId);
+        userRepository.deleteById(Integer.valueOf(userId));
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -89,6 +89,6 @@ public class UserService {
     @PreAuthorize("hasRole('ADMIN')")
     public UserResponse getUser(String id) {
         return userMapper.toUserResponse(
-                userRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED)));
+                userRepository.findById(Integer.valueOf(id)).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED)));
     }
 }

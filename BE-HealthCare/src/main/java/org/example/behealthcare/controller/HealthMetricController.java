@@ -1,5 +1,7 @@
 package org.example.behealthcare.controller;
 
+import jakarta.validation.Valid;
+import org.example.behealthcare.dto.HealthMetricCreateDTO;
 import org.example.behealthcare.dto.HealthMetricDTO;
 import org.example.behealthcare.entity.HealthMetric;
 import org.example.behealthcare.service.IHealthMetricService;
@@ -16,6 +18,7 @@ import java.util.List;
 public class HealthMetricController {
     @Autowired
     private IHealthMetricService healthMetricService;
+
 
     @GetMapping("/healthmetrics/{userId}")
     public ResponseEntity<List<HealthMetricDTO>> showHealthMetricsByUserId(@PathVariable Integer userId) {
@@ -41,4 +44,10 @@ public class HealthMetricController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/metrics-create")
+    public ResponseEntity<HealthMetric> create(@Valid @RequestBody HealthMetricCreateDTO dto) {
+        return ResponseEntity.ok(healthMetricService.create(dto));
+    }
+
 }

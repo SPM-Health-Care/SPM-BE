@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IReminderRepository extends JpaRepository<Reminder, Integer> {
@@ -22,5 +23,12 @@ public interface IReminderRepository extends JpaRepository<Reminder, Integer> {
             "JOIN r.reminderType t " +
             "WHERE u.userId = :userId")
     List<ReminderDTO> findAllByUser_UserId(@Param("userId") Integer userId);
+
+
+    @Query("SELECT r FROM Reminder r WHERE r.reminderId = :reminderId AND r.user.userId = :userId")
+    Optional<Reminder> findByReminderIdAndUserId(
+            @Param("reminderId") Integer reminderId,
+            @Param("userId") Integer userId
+    );
 
 }

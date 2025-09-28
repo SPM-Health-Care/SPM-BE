@@ -35,6 +35,4 @@ public interface IHealthMetricRepository extends JpaRepository<HealthMetric, Lon
     Optional<HealthMetric> findByUserIdAndDate(
             @Param("userId") Integer userId,
             @Param("recordedAt") LocalDate recordedAt);
-
-
 }

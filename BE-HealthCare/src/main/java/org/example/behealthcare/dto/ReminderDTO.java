@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.behealthcare.entity.Reminder;
 
 @Data
 @NoArgsConstructor
@@ -39,6 +40,12 @@ public class ReminderDTO {
         this.username = username;
         this.typeId = typeId;
         this.typeName = typeName;
+    }
+
+    public ReminderDTO(Reminder updated) {
+        this.reminderId = updated.getReminderId();
+        this.status = updated.getStatus();
+        this.userId = updated.getUser().getUserId();
     }
 }
 

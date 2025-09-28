@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IHealthThresholdRepository extends JpaRepository<HealthThreshold, Integer> {
+    HealthThreshold findByThresholdId(Integer thresholdId);
 }
