@@ -5,12 +5,15 @@ import org.example.behealthcare.dto.ReminderDTO;
 import org.example.behealthcare.entity.Reminder;
 import org.example.behealthcare.entity.ReminderType;
 import org.example.behealthcare.entity.User;
+import org.example.behealthcare.exception.AppException;
+import org.example.behealthcare.exception.ErrorCode;
 import org.example.behealthcare.repository.IReminderRepository;
 import org.example.behealthcare.repository.IReminderTypeRepository;
 import org.example.behealthcare.repository.UserRepository;
 import org.example.behealthcare.service.IReminderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,8 +28,11 @@ public class ReminderService implements IReminderService {
     @Autowired
     private IReminderTypeRepository IReminderTypeRepository;
 
-    @Override
+    @Transactional
     public void deleteByReminderId(Integer reminderId) {
+        if (!IReminderRepository.existsById(reminderId)) {
+            throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
+        }
         IReminderRepository.deleteByReminderId(reminderId);
     }
 

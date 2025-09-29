@@ -1,5 +1,6 @@
 package org.example.behealthcare.service.imp;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.behealthcare.dto.SleepTrackingCreateDTO;
 import org.example.behealthcare.dto.SleepTrackingDTO;
@@ -25,8 +26,11 @@ public class SleepTrackingService implements ISleepTrackingService {
     @Autowired
     private UserRepository userRepository;
 
-    @Override
+    @Transactional
     public void deleteBySleepId(Integer sleepId) {
+        if (!ISleepTrackingRepository.existsById(Long.valueOf(sleepId))) {
+            throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
+        }
         ISleepTrackingRepository.deleteBySleepId(sleepId);
     }
 

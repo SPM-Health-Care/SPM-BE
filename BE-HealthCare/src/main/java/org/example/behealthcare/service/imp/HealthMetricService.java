@@ -14,6 +14,7 @@ import org.example.behealthcare.repository.UserRepository;
 import org.example.behealthcare.service.IHealthMetricService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,8 +36,11 @@ public class HealthMetricService implements IHealthMetricService {
         return IHealthMetricRepository.findByMetricId(metricId);
     }
 
-    @Override
+    @Transactional
     public void deleteByMetricId(Integer metricId) {
+        if (!IHealthMetricRepository.existsById(Long.valueOf(metricId))) {
+            throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
+        }
         IHealthMetricRepository.deleteByMetricId(metricId);
     }
 

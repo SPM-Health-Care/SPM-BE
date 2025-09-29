@@ -45,4 +45,10 @@ public class MoodTrackingController {
     public ResponseEntity<MoodTracking> create(@RequestBody MoodTrackingCreateDTO dto) {
         return ResponseEntity.ok(moodTrackingService.create(dto));
     }
+
+    @DeleteMapping("/moodtrackings/{moodId}")
+    public ResponseEntity<Void> deleteMoodTracking(@PathVariable Integer moodId) {
+        moodTrackingService.deleteByMoodId(moodId);
+        return ResponseEntity.noContent().build();
+    }
 }

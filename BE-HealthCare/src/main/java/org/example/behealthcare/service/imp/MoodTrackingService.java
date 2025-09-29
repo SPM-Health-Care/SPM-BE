@@ -1,9 +1,12 @@
 package org.example.behealthcare.service.imp;
 
+import jakarta.transaction.Transactional;
 import org.example.behealthcare.dto.MoodTrackingCreateDTO;
 import org.example.behealthcare.dto.MoodTrackingDTO;
 import org.example.behealthcare.entity.MoodTracking;
 import org.example.behealthcare.entity.User;
+import org.example.behealthcare.exception.AppException;
+import org.example.behealthcare.exception.ErrorCode;
 import org.example.behealthcare.repository.IMoodTrackingRepository;
 import org.example.behealthcare.repository.UserRepository;
 import org.example.behealthcare.service.IMoodTrackingService;
@@ -21,8 +24,11 @@ public class MoodTrackingService implements IMoodTrackingService {
     @Autowired
     private UserRepository userRepository;
 
-    @Override
+    @Transactional
     public void deleteByMoodId(Integer moodId) {
+        if (!IMoodTrackingRepository.existsById(Long.valueOf(moodId))) {
+            throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
+        }
         IMoodTrackingRepository.deleteByMoodId(moodId);
     }
 

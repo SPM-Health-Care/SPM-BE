@@ -49,6 +49,7 @@ public class SleepTrackingDTO {
     }
 
     public SleepTrackingDTO(SleepTracking updated) {
+        this.sleepId = updated.getSleepId();
         this.sleepTime = updated.getSleepTime();
         this.wakeTime = updated.getWakeTime();
         this.recordedAt = updated.getRecordedAt();

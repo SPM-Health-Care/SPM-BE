@@ -47,4 +47,10 @@ public class SleepTrackingController {
     public ResponseEntity<SleepTracking> create(@Valid @RequestBody SleepTrackingCreateDTO dto) {
         return ResponseEntity.ok(sleepTrackingService.create(dto));
     }
+
+    @DeleteMapping("/sleeptrackings/{sleepId}")
+    public ResponseEntity<Void> deleteSleepTracking(@PathVariable Integer sleepId) {
+        sleepTrackingService.deleteBySleepId(sleepId);
+        return ResponseEntity.noContent().build();
+    }
 }

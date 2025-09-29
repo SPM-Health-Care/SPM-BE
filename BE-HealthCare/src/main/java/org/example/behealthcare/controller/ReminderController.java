@@ -45,4 +45,10 @@ public class ReminderController {
     public ResponseEntity<Reminder> create(@RequestBody ReminderCreateDTO dto) {
         return ResponseEntity.ok(reminderService.create(dto));
     }
+
+    @DeleteMapping("/reminders/{reminderId}")
+    public ResponseEntity<Void> deleteReminder(@PathVariable Integer reminderId) {
+        reminderService.deleteByReminderId(reminderId);
+        return ResponseEntity.noContent().build();
+    }
 }

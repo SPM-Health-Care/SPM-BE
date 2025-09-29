@@ -49,4 +49,10 @@ public class HealthMetricController {
     public ResponseEntity<HealthMetric> create(@Valid @RequestBody HealthMetricCreateDTO dto) {
         return ResponseEntity.ok(healthMetricService.create(dto));
     }
+
+    @DeleteMapping("/metrics/{metricId}")
+    public ResponseEntity<Void> deleteMetric(@PathVariable Integer metricId) {
+        healthMetricService.deleteByMetricId(metricId);
+        return ResponseEntity.noContent().build();
+    }
 }
